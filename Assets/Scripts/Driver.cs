@@ -10,6 +10,7 @@ public class Driver : MonoBehaviour
     [SerializeField] float regularSpeed = 10f;
 
     [SerializeField] TMP_Text boostText;
+    bool hasBoost = false;
 
     void Start()
     {
@@ -18,9 +19,10 @@ public class Driver : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Boost"))
+        if(collision.CompareTag("Boost") && !hasBoost)
         {
             currentSpeed = boostSpeed;
+            hasBoost = true;
             boostText.gameObject.SetActive(true);
             Destroy(collision.gameObject);
         }
@@ -29,6 +31,7 @@ public class Driver : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         currentSpeed = regularSpeed;
+        hasBoost = false;
         boostText.gameObject.SetActive(false);
     }
 
