@@ -3,12 +3,23 @@ using UnityEngine.InputSystem;
 
 public class Driver : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 0.05f;
-    [SerializeField] float steerSpeed = 0.5f;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] float currentSpeed = 10f;
+    [SerializeField] float steerSpeed = 200f;
+    [SerializeField] float boostSpeed = 30f;
+    [SerializeField] float regularSpeed = 10f;
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.CompareTag("Boost"))
+        {
+            currentSpeed = boostSpeed;
+            Destroy(collision.gameObject);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        currentSpeed = regularSpeed;
     }
 
     // Update is called once per frame
@@ -34,7 +45,7 @@ public class Driver : MonoBehaviour
             steer = -1f;
         }
 
-        float moveAmount = move * moveSpeed * Time.deltaTime;
+        float moveAmount = move * currentSpeed * Time.deltaTime;
         float steerAmount = steer * steerSpeed * Time.deltaTime;
         
         transform.Translate(0, moveAmount, 0);
