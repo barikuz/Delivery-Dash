@@ -3,8 +3,14 @@ using UnityEngine;
 public class Delivery : MonoBehaviour
 {
     bool hasGarbage;
-
     [SerializeField] float delay;
+
+    ParticleSystem particleSystem;
+
+    void Start()
+    {
+        particleSystem = GetComponent<ParticleSystem>();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,6 +18,7 @@ public class Delivery : MonoBehaviour
        {
         Debug.Log("We collected garbage");
         hasGarbage = true;
+        particleSystem.Play();
         Destroy(collision.gameObject, delay);
         
        }
@@ -20,6 +27,7 @@ public class Delivery : MonoBehaviour
         {
             Debug.Log("We delivered garbage");
             hasGarbage = false;
+            particleSystem.Stop();
         }
     }
 }
