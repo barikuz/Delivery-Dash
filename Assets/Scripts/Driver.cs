@@ -10,6 +10,9 @@ public class Driver : MonoBehaviour
     [SerializeField] float regularSpeed = 10f;
 
     [SerializeField] TMP_Text boostText;
+    [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text timerText;
+    [SerializeField] TMP_Text fuelText;
     bool hasBoost = false;
 
     void Start()
@@ -38,6 +41,11 @@ public class Driver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timerText.text == "Time's Up!")
+        {
+            return;
+        }
+
         float move = 0f;
         float steer = 0f;
 
