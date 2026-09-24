@@ -9,6 +9,7 @@ public class Driver : MonoBehaviour
     [SerializeField] float boostSpeed = 30f;
     [SerializeField] float regularSpeed = 10f;
     [SerializeField] float fuel = 100f;
+    [SerializeField] float fuelConsumptionRate = 2f;
 
     [SerializeField] TMP_Text boostText;
     [SerializeField] TMP_Text fuelText;
@@ -17,11 +18,20 @@ public class Driver : MonoBehaviour
 
     bool hasBoost = false;
     bool isRefueling = false;
+    bool isFuelConsuming = false;
 
-    void decreaseFuel()
+    void decreaseFuel(float amount)
     {
-        fuel -= Time.deltaTime;
+        fuel -= Time.deltaTime * amount;
         fuelText.text = "Fuel: " + fuel.ToString("0");
+        if (fuel <= 0f)
+        {
+            fuelText.text = "Ran out of fuel!";
+            gameEnd.isGameOver = true;
+            gameEnd.endGame("Game OVER!");
+        }
+        
+
     }
 
     void Start()
@@ -37,6 +47,8 @@ public class Driver : MonoBehaviour
             hasBoost = true;
             boostText.gameObject.SetActive(true);
             Destroy(collision.gameObject);
+
+            isFuelConsuming = true;
         }
 
         if(collision.CompareTag("Gas Station"))
@@ -59,6 +71,8 @@ public class Driver : MonoBehaviour
         currentSpeed = regularSpeed;
         hasBoost = false;
         boostText.gameObject.SetActive(false);
+
+        isFuelConsuming = false;
     }
 
     // Update is called once per frame
@@ -78,28 +92,33 @@ public class Driver : MonoBehaviour
             }
         }
 
+        if (isFuelConsuming)
+        {
+            decreaseFuel(fuelConsumptionRate); // Consume fuel at a rate of 2 units per second
+        }
+
         float move = 0f;
         float steer = 0f;
 
         if (Keyboard.current.wKey.isPressed)
         {
             move = 1f;
-            decreaseFuel();
+            decreaseFuel(1f);
         }
         if (Keyboard.current.sKey.isPressed)
         {
             move = -1f;
-            decreaseFuel();
+            decreaseFuel(1f);
         }
         if (Keyboard.current.aKey.isPressed)
         {
             steer = 1f;
-            decreaseFuel();
+            decreaseFuel(1f);
         }
         if (Keyboard.current.dKey.isPressed)
         {
             steer = -1f;
-            decreaseFuel();
+            decreaseFuel(1f);
         }
 
         float moveAmount = move * currentSpeed * Time.deltaTime;
