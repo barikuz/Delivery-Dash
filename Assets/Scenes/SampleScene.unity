@@ -8094,7 +8094,7 @@ GameObject:
   - component: {fileID: 381686757}
   - component: {fileID: 381686756}
   m_Layer: 5
-  m_Name: Game Over Text
+  m_Name: Game Result Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19771,7 +19771,6 @@ Transform:
   - {fileID: 919230609}
   - {fileID: 1827415967}
   - {fileID: 1189832658}
-  - {fileID: 1305151986}
   - {fileID: 1454731030}
   - {fileID: 2085125502}
   - {fileID: 1359988863}
@@ -20194,7 +20193,7 @@ GameObject:
   - component: {fileID: 893780084}
   - component: {fileID: 893780083}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Restart Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21195,7 +21194,7 @@ GameObject:
   - component: {fileID: 925056425}
   - component: {fileID: 925056424}
   m_Layer: 5
-  m_Name: Score Text
+  m_Name: Left Garbage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21217,8 +21216,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -413.4, y: -36.699997}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: -436.4, y: -36.699997}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925056424
 MonoBehaviour:
@@ -21240,7 +21239,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 0'
+  m_text: 'Garbages: 30'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -27304,6 +27303,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209057875}
   m_CullTransparentMesh: 1
+--- !u!1 &1216362379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1216362381}
+  - component: {fileID: 1216362380}
+  m_Layer: 0
+  m_Name: GameEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1216362380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216362379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b993e40e6657b41a79a27e3fdfda2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameEnd
+  gameResultText: {fileID: 381686756}
+  restartButton: {fileID: 893780083}
+  driver: {fileID: 1420276318}
+--- !u!4 &1216362381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216362379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 502.43213, y: 230.80661, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1222658937
 GameObject:
   m_ObjectHideFlags: 0
@@ -28549,11 +28595,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!4 &1305151986 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-  m_PrefabInstance: {fileID: 1508179814}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306373156
 GameObject:
   m_ObjectHideFlags: 0
@@ -30139,9 +30180,8 @@ MonoBehaviour:
   boostSpeed: 15
   regularSpeed: 10
   boostText: {fileID: 1926675613}
-  scoreText: {fileID: 0}
-  timerText: {fileID: 1521857326}
-  fuelText: {fileID: 0}
+  fuelText: {fileID: 1209057877}
+  isGameOver: 0
 --- !u!4 &1420276320
 Transform:
   m_ObjectHideFlags: 0
@@ -30243,7 +30283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac57eca091fb9f4e9b48b35947081d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collison
-  delay: 0.1
+  garbageCount: 1
+  leftGarbageText: {fileID: 925056424}
+  gameEnd: {fileID: 1216362380}
 --- !u!199 &1420276325
 ParticleSystemRenderer:
   serializedVersion: 7
@@ -36966,63 +37008,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1949723464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1508179814
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 874159862}
-    m_Modifications:
-    - target: {fileID: 1796873001529771713, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_Name
-      value: Garbage
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -54.760612
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 24.607756
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
 --- !u!1 &1510887848
 GameObject:
   m_ObjectHideFlags: 0
@@ -37362,8 +37347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Countdown
   remainingTime: 5
   timerText: {fileID: 1521857326}
-  gameOverText: {fileID: 381686756}
-  restartButton: {fileID: 893780083}
+  gameEnd: {fileID: 1216362380}
 --- !u!4 &1524109865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
@@ -51708,3 +51692,4 @@ SceneRoots:
   - {fileID: 874159862}
   - {fileID: 697902875}
   - {fileID: 2378305}
+  - {fileID: 1216362381}
