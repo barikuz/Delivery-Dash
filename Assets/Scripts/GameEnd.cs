@@ -9,7 +9,8 @@ public class GameEnd : MonoBehaviour
     
     [SerializeField] Button restartButton;
 
-    [SerializeField] Driver driver;
+
+    public bool isGameOver = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +22,7 @@ public class GameEnd : MonoBehaviour
 
     public void endGame(string result)
     {
-        driver.isGameOver = true;
+        isGameOver = true;
         gameResultText.text = result;
         gameResultText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);

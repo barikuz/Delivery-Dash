@@ -12,8 +12,9 @@ public class Driver : MonoBehaviour
     [SerializeField] TMP_Text boostText;
     [SerializeField] TMP_Text fuelText;
 
+    [SerializeField] GameEnd gameEnd;
+
     bool hasBoost = false;
-    public bool isGameOver = false;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class Driver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isGameOver)
+        if(gameEnd.isGameOver)
         {
             return;
         }

@@ -27334,7 +27334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameEnd
   gameResultText: {fileID: 381686756}
   restartButton: {fileID: 893780083}
-  driver: {fileID: 1420276318}
+  isGameOver: 0
 --- !u!4 &1216362381
 Transform:
   m_ObjectHideFlags: 0
@@ -30181,7 +30181,7 @@ MonoBehaviour:
   regularSpeed: 10
   boostText: {fileID: 1926675613}
   fuelText: {fileID: 1209057877}
-  isGameOver: 0
+  gameEnd: {fileID: 1216362380}
 --- !u!4 &1420276320
 Transform:
   m_ObjectHideFlags: 0

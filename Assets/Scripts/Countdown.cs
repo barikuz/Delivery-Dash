@@ -8,6 +8,7 @@ public class Countdown : MonoBehaviour
     [SerializeField] TMP_Text timerText;
     
     [SerializeField] GameEnd gameEnd;
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +18,7 @@ public class Countdown : MonoBehaviour
             gameEnd.endGame("Game OVER!");
             return;
         }
-        else
+        else if(!gameEnd.isGameOver)
         {
             remainingTime -= Time.deltaTime;
             timerText.text = "Time: " + remainingTime.ToString("0");
