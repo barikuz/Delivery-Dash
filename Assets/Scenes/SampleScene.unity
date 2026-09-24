@@ -8117,7 +8117,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 50}
+  m_SizeDelta: {x: 540, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381686756
 MonoBehaviour:
@@ -8166,8 +8166,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 128
+  m_fontSizeBase: 128
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20217,8 +20217,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.5, y: -62.4}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: 2.5, y: -118}
+  m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &893780083
 MonoBehaviour:
@@ -37360,10 +37360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db6040f8d5e0a94e83ddbe916c6a9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Countdown
-  remainingTime: 120
+  remainingTime: 5
   timerText: {fileID: 1521857326}
   gameOverText: {fileID: 381686756}
-  restartButton: {fileID: 0}
+  restartButton: {fileID: 893780083}
 --- !u!4 &1524109865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7549605092762997083, guid: 6ed6fb8a5403f0840996fb8048fc7809, type: 3}
