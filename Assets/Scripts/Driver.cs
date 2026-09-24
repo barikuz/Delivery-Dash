@@ -8,6 +8,7 @@ public class Driver : MonoBehaviour
     [SerializeField] float steerSpeed = 200f;
     [SerializeField] float boostSpeed = 30f;
     [SerializeField] float regularSpeed = 10f;
+    [SerializeField] float fuel = 100f;
 
     [SerializeField] TMP_Text boostText;
     [SerializeField] TMP_Text fuelText;
@@ -15,6 +16,13 @@ public class Driver : MonoBehaviour
     [SerializeField] GameEnd gameEnd;
 
     bool hasBoost = false;
+    bool isRefueling = false;
+
+    void decreaseFuel()
+    {
+        fuel -= Time.deltaTime;
+        fuelText.text = "Fuel: " + fuel.ToString("0");
+    }
 
     void Start()
     {
@@ -29,6 +37,20 @@ public class Driver : MonoBehaviour
             hasBoost = true;
             boostText.gameObject.SetActive(true);
             Destroy(collision.gameObject);
+        }
+
+        if(collision.CompareTag("Gas Station"))
+        {
+            isRefueling = true;
+        }
+        
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Gas Station"))
+        {
+            isRefueling = false;
         }
     }
 
@@ -47,24 +69,37 @@ public class Driver : MonoBehaviour
             return;
         }
 
+        if (isRefueling)
+        {
+            if (fuel < 100f)
+            {
+                fuel += Time.deltaTime * 5f; // Refuel at a rate of 5 units per second
+                fuelText.text = "Fuel: " + fuel.ToString("0");
+            }
+        }
+
         float move = 0f;
         float steer = 0f;
 
         if (Keyboard.current.wKey.isPressed)
         {
             move = 1f;
+            decreaseFuel();
         }
         if (Keyboard.current.sKey.isPressed)
         {
             move = -1f;
+            decreaseFuel();
         }
         if (Keyboard.current.aKey.isPressed)
         {
             steer = 1f;
+            decreaseFuel();
         }
         if (Keyboard.current.dKey.isPressed)
         {
             steer = -1f;
+            decreaseFuel();
         }
 
         float moveAmount = move * currentSpeed * Time.deltaTime;
