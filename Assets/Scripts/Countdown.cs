@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Countdown : MonoBehaviour
 {
@@ -7,10 +9,15 @@ public class Countdown : MonoBehaviour
 
     [SerializeField] TMP_Text timerText;
     [SerializeField] TMP_Text gameOverText;
+
+    [SerializeField] Button restartButton;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameOverText.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
+        restartButton.onClick.AddListener(RestartGame);
     }
 
     // Update is called once per frame
@@ -20,6 +27,7 @@ public class Countdown : MonoBehaviour
         {
             timerText.text = "Time's Up!";
             gameOverText.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
             return;
         }
         else
@@ -28,5 +36,10 @@ public class Countdown : MonoBehaviour
             timerText.text = "Time: " + remainingTime.ToString("0");
         }
 
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
