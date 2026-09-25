@@ -20,7 +20,7 @@ public class Delivery : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-       if(collision.CompareTag("Garbage") && !hasGarbage)
+        if(collision.CompareTag("Garbage") && !hasGarbage)
        {
             hasGarbage = true;
             particleSystem.Play();
