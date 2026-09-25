@@ -65,5 +65,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Unity-generated backup folders
+*_BackUpThisFolder_ButDontShipItWithYourGame/
+
 # Mac OS files
 .DS_Store

@@ -40,6 +40,7 @@ public class Driver : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         boostText.gameObject.SetActive(false);
     }
     
